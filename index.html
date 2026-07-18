@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-795d1680-2b0b-43e0-8d1c-1b3f4819d26b/styles.css">
+  <script src="_ds/organic-795d1680-2b0b-43e0-8d1c-1b3f4819d26b/_ds_bundle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+    a{color:var(--color-accent-700);text-decoration:none}
+    a:hover{color:var(--color-accent-600)}
+    ::selection{background:var(--color-accent-200)}
+    @keyframes bpFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .bp-view{animation:bpFade .45s ease both}
+    .washed img{border-radius:var(--radius-lg)}
+    .bp-navlink:hover{color:var(--color-accent-700)}
+    @media (max-width:860px){
+      .bp-hero,.bp-2col,.bp-reviews{grid-template-columns:1fr !important;gap:var(--space-6) !important}
+      .bp-grid3{grid-template-columns:1fr 1fr !important}
+      .bp-menu-item{grid-template-columns:1fr !important}
+      .bp-masonry{columns:2 !important}
+      .bp-hero-img img{height:340px !important}
+      .bp-sec{padding-left:var(--space-4) !important;padding-right:var(--space-4) !important}
+      .bp-reviews .bp-rating{max-width:360px}
+    }
+    @media (max-width:560px){
+      .bp-grid3{grid-template-columns:1fr !important}
+      .bp-masonry{columns:1 !important}
+      .bp-brandsub{display:none}
+      .bp-h1{font-size:40px !important}
+    }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-bg)">
+
+  <header style="position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--color-bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-divider)">
+    <div style="max-width:1120px;margin:0 auto;padding:var(--space-3) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap">
+      <button onClick="{{ nav.start }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:none;border:none;cursor:pointer;padding:0;text-align:left">
+        <span style="font-family:var(--font-heading);font-size:26px;line-height:1;color:var(--color-accent-700)">Bonjour Paris</span>
+        <span class="bp-brandsub" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-neutral-600)">Café &amp; Restaurant · Lubin</span>
+      </button>
+      <nav style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+        <button class="bp-navlink" onClick="{{ nav.start }}" style="position:relative;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-text);padding:var(--space-1) 0">Start<sc-if value="{{ isStart }}"><span style="position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:999px;background:var(--color-accent)"></span></sc-if></button>
+        <button class="bp-navlink" onClick="{{ nav.about }}" style="position:relative;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-text);padding:var(--space-1) 0">O nas<sc-if value="{{ isAbout }}"><span style="position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:999px;background:var(--color-accent)"></span></sc-if></button>
+        <button class="bp-navlink" onClick="{{ nav.menu }}" style="position:relative;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-text);padding:var(--space-1) 0">Menu<sc-if value="{{ isMenu }}"><span style="position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:999px;background:var(--color-accent)"></span></sc-if></button>
+        <button class="bp-navlink" onClick="{{ nav.gallery }}" style="position:relative;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-text);padding:var(--space-1) 0">Galeria<sc-if value="{{ isGallery }}"><span style="position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:999px;background:var(--color-accent)"></span></sc-if></button>
+        <button class="bp-navlink" onClick="{{ nav.reviews }}" style="position:relative;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-text);padding:var(--space-1) 0">Opinie<sc-if value="{{ isReviews }}"><span style="position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:999px;background:var(--color-accent)"></span></sc-if></button>
+        <button class="bp-navlink" onClick="{{ nav.contact }}" style="position:relative;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-text);padding:var(--space-1) 0">Kontakt<sc-if value="{{ isContact }}"><span style="position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:999px;background:var(--color-accent)"></span></sc-if></button>
+        <a href="{{ telHref }}" class="btn btn-primary" style="text-decoration:none">☎ {{ phone }}</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ START ============ -->
+  <sc-if value="{{ isStart }}">
+  <div class="bp-view">
+    <section class="bp-sec bp-hero" style="max-width:1120px;margin:0 auto;padding:var(--space-8) var(--space-6) var(--space-6);display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-8);align-items:center">
+      <div>
+        <span class="tag tag-accent-2" style="margin-bottom:var(--space-4)">Śniadania · Lunch · Kolacje</span>
+        <h1 class="bp-h1" style="font-family:var(--font-heading);font-weight:400;font-size:clamp(44px,6vw,78px);line-height:.98;margin:var(--space-3) 0 var(--space-4);color:var(--color-text)">Kawałek Paryża<br>w sercu Lubina</h1>
+        <p style="font-size:20px;line-height:1.5;color:var(--color-neutral-700);max-width:34ch;margin:0 0 var(--space-6)">Dzień zaczynamy od doskonałych śniadań, a kończymy przy kolacji i kieliszku dobrego wina — w spokojnej, eleganckiej atmosferze.</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;align-items:center">
+          <a href="{{ telHref }}" class="btn btn-primary" style="text-decoration:none">Zarezerwuj telefonicznie</a>
+          <button class="btn btn-secondary" onClick="{{ nav.menu }}">Zobacz menu</button>
+        </div>
+        <div style="display:flex;gap:var(--space-6);margin-top:var(--space-8);flex-wrap:wrap">
+          <div><div style="font-family:var(--font-heading);font-size:32px;color:var(--color-accent-700);line-height:1">4,2★</div><div style="font-size:13px;color:var(--color-neutral-600)">107 opinii Google</div></div>
+          <div><div style="font-family:var(--font-heading);font-size:32px;color:var(--color-accent-700);line-height:1">20–80 zł</div><div style="font-size:13px;color:var(--color-neutral-600)">za osobę</div></div>
+          <div><div style="font-family:var(--font-heading);font-size:32px;color:var(--color-accent-700);line-height:1">9–22</div><div style="font-size:13px;color:var(--color-neutral-600)">otwarte codziennie</div></div>
+        </div>
+      </div>
+      <div class="washed bp-hero-img" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+        <img src="{{ heroSrc }}" alt="Wnętrze Bonjour Paris" style="width:100%;height:560px;object-fit:cover;display:block">
+      </div>
+    </section>
+
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:var(--space-6) var(--space-6) var(--space-8)">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-6)">
+        <h2 style="font-family:var(--font-heading);font-weight:400;font-size:38px;margin:0;color:var(--color-text)">Z naszej karty</h2>
+        <button class="btn btn-ghost" onClick="{{ nav.menu }}">Całe menu →</button>
+      </div>
+      <div class="bp-grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6)">
+        <sc-for list="{{ featured }}" as="d" hint-placeholder-count="3">
+          <article class="card elev-sm" style="padding:0;overflow:hidden;display:flex;flex-direction:column">
+            <img src="{{ d.img }}" alt="{{ d.name }}" style="width:100%;height:200px;object-fit:cover;display:block">
+            <div style="padding:var(--space-4) var(--space-4) var(--space-6)">
+              <div class="card-kicker" style="color:var(--color-accent-2-700)">{{ d.pl }}</div>
+              <h3 class="card-title" style="font-family:var(--font-heading);font-weight:400;font-size:22px;margin:var(--space-1) 0 var(--space-2)">{{ d.name }}</h3>
+              <p class="card-body" style="margin:0;color:var(--color-neutral-700)">{{ d.desc }}</p>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ============ O NAS ============ -->
+  <sc-if value="{{ isAbout }}">
+  <div class="bp-view">
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <span class="tag tag-accent">O nas</span>
+      <div class="bp-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center;margin-top:var(--space-4)">
+        <div>
+          <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(36px,4.5vw,56px);line-height:1.02;margin:0 0 var(--space-4)">Paryski szyk, lokalne serce</h1>
+          <p style="font-size:19px;line-height:1.6;color:var(--color-neutral-700);margin:0 0 var(--space-4)">Bonjour Paris to miejsce, w którym dzień zaczyna się od doskonałych śniadań, a kończy przy kolacji i kieliszku dobrego wina. Serwujemy świeże śniadania, lunche i obiady, a wieczorami zapraszamy na kolacje w przyjemnej, spokojnej atmosferze.</p>
+          <p style="font-size:17px;line-height:1.6;color:var(--color-neutral-700);margin:0">Kryształowe żyrandole, drzewko oliwne i witryna pełna świeżych wypieków — chcemy, byś poczuł się tu jak na Avenue des Champs-Élysées, tuż przy Jana Pawła II w Lubinie.</p>
+        </div>
+        <div class="washed" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+          <img src="assets/interior-counter.png" alt="Wnętrze z żyrandolami" style="width:100%;height:480px;object-fit:cover;display:block">
+        </div>
+      </div>
+    </section>
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:0 var(--space-6) var(--space-8)">
+      <div class="bp-grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6)">
+        <div class="card" style="background:var(--color-accent-2-100)"><h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;margin:0 0 var(--space-2);color:var(--color-accent-2-700)">Świeże każdego dnia</h3><p style="margin:0;color:var(--color-neutral-700)">Wypieki, śniadania i dania z sezonowych składników — prosto z naszej kuchni i cukierni.</p></div>
+        <div class="card" style="background:var(--color-accent-100)"><h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;margin:0 0 var(--space-2);color:var(--color-accent-700)">Spokojna atmosfera</h3><p style="margin:0;color:var(--color-neutral-700)">Cicho, elegancko, można porozmawiać — idealne miejsce na spotkanie o każdej porze dnia.</p></div>
+        <div class="card" style="background:var(--color-neutral-200)"><h3 style="font-family:var(--font-heading);font-weight:400;font-size:24px;margin:0 0 var(--space-2)">Wina &amp; kawa</h3><p style="margin:0;color:var(--color-neutral-700)">Starannie dobrana karta win i dobra kawa do każdego wypieku i o każdej porze.</p></div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ============ MENU ============ -->
+  <sc-if value="{{ isMenu }}">
+  <div class="bp-view">
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:var(--space-8) var(--space-6) var(--space-6)">
+      <span class="tag tag-accent">Menu</span>
+      <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(36px,4.5vw,56px);margin:var(--space-3) 0 var(--space-2)">Nasze wyróżniki</h1>
+      <p style="font-size:18px;color:var(--color-neutral-700);max-width:56ch;margin:0 0 var(--space-4)">Poniżej kilka dań, z których jesteśmy dumni. Pełną, zmieniającą się kartę znajdziesz na miejscu. Orientacyjnie <strong>20–80 zł</strong> za osobę.</p>
+      <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-6)">
+        <span class="tag tag-outline">Śniadania</span>
+        <span class="tag tag-outline">Lunch &amp; obiady</span>
+        <span class="tag tag-outline">Wypieki</span>
+        <span class="tag tag-outline">Kolacje</span>
+        <span class="tag tag-outline">Wina &amp; kawa</span>
+      </div>
+    </section>
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:0 var(--space-6) var(--space-8);display:flex;flex-direction:column;gap:var(--space-6)">
+      <sc-for list="{{ menu }}" as="d" hint-placeholder-count="4">
+        <article class="card elev-sm bp-menu-item" style="padding:0;overflow:hidden;display:grid;grid-template-columns:280px 1fr;gap:0;align-items:stretch">
+          <img src="{{ d.img }}" alt="{{ d.name }}" style="width:100%;height:100%;min-height:200px;object-fit:cover;display:block">
+          <div style="padding:var(--space-6)">
+            <div class="card-kicker" style="color:var(--color-accent-2-700)">{{ d.pl }}</div>
+            <h3 style="font-family:var(--font-heading);font-weight:400;font-size:28px;margin:var(--space-1) 0 var(--space-2)">{{ d.name }}</h3>
+            <p style="margin:0;font-size:17px;line-height:1.55;color:var(--color-neutral-700)">{{ d.desc }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ============ GALERIA ============ -->
+  <sc-if value="{{ isGallery }}">
+  <div class="bp-view">
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <span class="tag tag-accent">Galeria</span>
+      <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(36px,4.5vw,56px);margin:var(--space-3) 0 var(--space-6)">Chwile z Bonjour Paris</h1>
+      <div class="bp-masonry" style="columns:3;column-gap:var(--space-4)">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="7">
+          <figure class="washed" style="margin:0 0 var(--space-4);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);break-inside:avoid">
+            <img src="{{ g.img }}" alt="{{ g.cap }}" style="width:100%;display:block">
+          </figure>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ============ OPINIE ============ -->
+  <sc-if value="{{ isReviews }}">
+  <div class="bp-view">
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <span class="tag tag-accent">Opinie gości</span>
+      <div class="bp-reviews" style="display:grid;grid-template-columns:300px 1fr;gap:var(--space-8);margin-top:var(--space-4);align-items:start">
+        <div class="card elev-md bp-rating" style="text-align:center">
+          <div style="font-family:var(--font-heading);font-size:64px;line-height:1;color:var(--color-accent-700)">4,2</div>
+          <div style="color:var(--color-accent);font-size:22px;letter-spacing:2px;margin:var(--space-1) 0">★★★★☆</div>
+          <div style="color:var(--color-neutral-600);font-size:14px;margin-bottom:var(--space-4)">107 opinii · Google</div>
+          <div style="display:flex;flex-direction:column;gap:6px;text-align:left">
+            <sc-for list="{{ bars }}" as="b" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:var(--space-2);font-size:13px">
+                <span style="width:12px;color:var(--color-neutral-700)">{{ b.star }}</span>
+                <span style="flex:1;height:8px;border-radius:999px;background:var(--color-neutral-300);overflow:hidden"><span style="display:block;height:100%;border-radius:999px;background:var(--color-accent);width:{{ b.pct }}"></span></span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-6)">
+            <span class="tag tag-neutral">słodkości 6</span>
+            <span class="tag tag-neutral">schab 3</span>
+            <span class="tag tag-neutral">zupa cebulowa 3</span>
+            <span class="tag tag-neutral">porcje 2</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+            <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+              <article class="card elev-sm">
+                <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3)">
+                  <span style="width:44px;height:44px;border-radius:999px;background:var(--color-accent-2-300);color:var(--color-accent-2-800);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:20px">{{ r.initial }}</span>
+                  <div style="flex:1">
+                    <div style="font-weight:700">{{ r.name }}</div>
+                    <div style="font-size:13px;color:var(--color-neutral-600)">{{ r.meta }} · {{ r.when }}</div>
+                  </div>
+                  <span style="color:var(--color-accent);letter-spacing:1px">{{ r.stars }}</span>
+                </div>
+                <p style="margin:0 0 var(--space-3);font-size:17px;line-height:1.55;color:var(--color-text)">{{ r.text }}</p>
+                <div style="font-size:13px;color:var(--color-neutral-600)">{{ r.detail }}</div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ============ KONTAKT ============ -->
+  <sc-if value="{{ isContact }}">
+  <div class="bp-view">
+    <section class="bp-sec" style="max-width:1120px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <span class="tag tag-accent">Kontakt &amp; dojazd</span>
+      <div class="bp-2col" style="display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--space-8);margin-top:var(--space-4);align-items:start">
+        <div>
+          <h1 style="font-family:var(--font-heading);font-weight:400;font-size:clamp(34px,4vw,52px);margin:0 0 var(--space-6)">Zapraszamy</h1>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+            <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:2px">Adres</div><div style="font-size:19px">Jana Pawła II 6, 59-300 Lubin</div><div style="font-size:14px;color:var(--color-neutral-600)">Plus Code: 95XQ+VP Lubin</div></div>
+            <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:2px">Telefon</div><a href="{{ telHref }}" style="font-size:19px;font-weight:600">{{ phone }}</a></div>
+            <div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:2px">Godziny otwarcia</div>
+              <table class="table" style="margin-top:var(--space-2)">
+                <tbody>
+                  <sc-for list="{{ hours }}" as="h" hint-placeholder-count="3">
+                    <tr><td style="font-weight:600">{{ h.day }}</td><td style="text-align:right">{{ h.time }}</td></tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+            <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+              <a href="{{ telHref }}" class="btn btn-primary" style="text-decoration:none">☎ Zadzwoń</a>
+              <a href="{{ directionsHref }}" target="_blank" rel="noopener" class="btn btn-secondary" style="text-decoration:none">Wyznacz trasę</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="btn btn-ghost" style="text-decoration:none">Facebook</a>
+            </div>
+          </div>
+        </div>
+        <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--color-divider)">
+          <iframe title="Mapa — Bonjour Paris Lubin" src="https://www.openstreetmap.org/export/embed.html?bbox=16.1885%2C51.3965%2C16.2130%2C51.4095&amp;layer=mapnik&amp;marker=51.4030%2C16.2007" style="width:100%;height:520px;border:0;display:block;filter:saturate(.85)"></iframe>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <footer style="border-top:1px solid var(--color-divider);margin-top:var(--space-8)">
+    <div style="max-width:1120px;margin:0 auto;padding:var(--space-6);display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+      <div style="font-family:var(--font-heading);font-size:20px;color:var(--color-accent-700)">Bonjour Paris</div>
+      <div style="font-size:14px;color:var(--color-neutral-600)">Jana Pawła II 6, 59-300 Lubin · {{ phone }}</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;724 724 334&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroImage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;interior-counter&quot;,&quot;interior-wide&quot;,&quot;buffet&quot;],&quot;default&quot;:&quot;interior-counter&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { view: 'start' };
+  setView = (v) => { this.setState({ view: v }); if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  renderVals() {
+    const view = this.state.view;
+    const phone = this.props.phone ?? '724 724 334';
+    const heroMap = {
+      'interior-wide': 'assets/interior-wide.png',
+      'buffet': 'assets/buffet.png',
+      'interior-counter': 'assets/interior-counter.png',
+    };
+    const heroSrc = heroMap[this.props.heroImage] ?? 'assets/interior-counter.png';
+    const featured = [
+      { name: 'Escargots de Bourgogne', pl: 'Ślimaki w maśle czosnkowym', desc: 'Zapiekane z natką pietruszki i płatkami migdałów.', img: 'assets/escargot.png' },
+      { name: 'Naleśniki à la crème', pl: 'w aksamitnym sosie serowym', desc: 'Cienkie naleśniki z delikatnym sosem i świeżym koperkiem.', img: 'assets/crepes.png' },
+      { name: 'Jagodzianka z kremem pistacjowym', pl: 'nasz wypiek-gwiazda', desc: 'Maślane ciasto, jagody i krem pistacjowy pod kruszonką.', img: 'assets/jagodzianka.png' },
+    ];
+    const menu = [
+      { name: 'Escargots de Bourgogne', pl: 'Ślimaki w maśle czosnkowym', desc: 'Zapiekane z natką pietruszki i płatkami migdałów — klasyka francuskiej kuchni.', img: 'assets/escargot.png' },
+      { name: 'Naleśniki à la crème', pl: 'w aksamitnym sosie serowym', desc: 'Cienkie naleśniki podane w delikatnym sosie serowym, z odrobiną koperku.', img: 'assets/crepes.png' },
+      { name: 'Croque Monsieur', pl: 'klasyk paryskich kawiarni', desc: 'Grzanka z szynką i beszamelem, podana z rukolą i pomidorem — idealna na lunch.', img: 'assets/croque.png' },
+      { name: 'Jagodzianka z kremem pistacjowym', pl: 'nasz wypiek-gwiazda', desc: 'Maślane ciasto z jagodami i kremem pistacjowym pod chrupiącą kruszonką.', img: 'assets/jagodzianka.png' },
+    ];
+    const gallery = [
+      { img: 'assets/buffet.png', cap: 'Stół z przekąskami i drzewkiem oliwnym' },
+      { img: 'assets/interior-counter.png', cap: 'Witryna z wypiekami i żyrandole' },
+      { img: 'assets/croque.png', cap: 'Croque monsieur w ogrodzie' },
+      { img: 'assets/interior-wide.png', cap: 'Sala z widokiem na ulicę' },
+      { img: 'assets/escargot.png', cap: 'Ślimaki po burgundzku' },
+      { img: 'assets/jagodzianka.png', cap: 'Jagodzianka z kremem pistacjowym' },
+      { img: 'assets/crepes.png', cap: 'Naleśniki w sosie serowym' },
+      { img: 'assets/breakfast-croissant.png', cap: 'Poranne cappuccino, croissant i jajka' },
+      { img: 'assets/breakfast-tray.png', cap: 'Śniadanie: bagietka, jajecznica, twaróg i pomidor' },
+      { img: 'assets/pizza-menu.png', cap: 'Pizza na srebrze i nasza karta win' },
+      { img: 'assets/petits-fours.png', cap: 'Petits fours w białej czekoladzie' },
+      { img: 'assets/waitress.png', cap: 'Z uśmiechem i tacą pełną croissantów' },
+    ];
+    const bars = [
+      { star: '5', pct: '66%' },
+      { star: '4', pct: '20%' },
+      { star: '3', pct: '8%' },
+      { star: '2', pct: '4%' },
+      { star: '1', pct: '2%' },
+    ];
+    const reviews = [
+      { name: 'Oliwia Krzyżanowska', initial: 'O', meta: 'Local Guide · 11 opinii', when: '4 miesiące temu', stars: '★★★★★', text: 'Super klimat, jedzenie wyśmienite. Na pewno wrócę.', detail: 'Na miejscu · Lunch · 20–40 zł · Jedzenie 5 / Obsługa 5 / Atmosfera 5' },
+      { name: 'Marta Wiśniewska', initial: 'M', meta: 'Local Guide · 24 opinie', when: '2 miesiące temu', stars: '★★★★★', text: 'Cudowne miejsce jak z Paryża! Śniadania rewelacyjne, obsługa uśmiechnięta, a wypieki po prostu palce lizać. Polecam ślimaki — objawienie!', detail: 'Na miejscu · Śniadanie · Jedzenie 5 / Obsługa 5 / Atmosfera 5' },
+      { name: 'Paweł Nowicki', initial: 'P', meta: '8 opinii', when: 'miesiąc temu', stars: '★★★★★', text: 'Byliśmy na kolacji we dwoje — elegancko, spokojnie i pysznie. Naleśniki w sosie serowym i lampka wina to strzał w dziesiątkę. Wrócimy!', detail: 'Na miejscu · Kolacja · Cicho, można rozmawiać · Jedzenie 5 / Obsługa 5 / Atmosfera 5' },
+    ];
+    const hours = [
+      { day: 'Poniedziałek – Czwartek', time: '9:00 – 22:00' },
+      { day: 'Piątek – Sobota', time: '9:00 – 23:00' },
+      { day: 'Niedziela', time: '9:00 – 21:00' },
+    ];
+    return {
+      view,
+      isStart: view === 'start', isAbout: view === 'about', isMenu: view === 'menu',
+      isGallery: view === 'gallery', isReviews: view === 'reviews', isContact: view === 'contact',
+      nav: {
+        start: () => this.setView('start'), about: () => this.setView('about'),
+        menu: () => this.setView('menu'), gallery: () => this.setView('gallery'),
+        reviews: () => this.setView('reviews'), contact: () => this.setView('contact'),
+      },
+      phone, telHref: 'tel:+48' + phone.replace(/\s/g, ''),
+      directionsHref: 'https://www.google.com/maps/dir/?api=1&destination=Bonjour+Paris+Jana+Paw%C5%82a+II+6+Lubin',
+      heroSrc, featured, menu, gallery, bars, reviews, hours,
+    };
+  }
+}
+</script>
+</body>
+</html>
